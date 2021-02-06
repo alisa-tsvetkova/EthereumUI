@@ -22,7 +22,6 @@ class App extends Component {
         <Router>
           <Header></Header>
           <main>
-
             <Switch>
               <Route path="/block/:blockId">
                 <Block></Block>
@@ -33,7 +32,6 @@ class App extends Component {
             </Switch>
           </main>
           <Footer>
-
           </Footer>
         </Router>
       </div>
