@@ -37,7 +37,6 @@ function SearchBar() {
         }
     }
 
-
     return <div><InputGroup className="mb-3">
         <FormControl
             inputMode="numeric"
@@ -48,7 +47,13 @@ function SearchBar() {
             onKeyDown={handleKeyDown}
         />
         <InputGroup.Append>
-            <Button variant="btn btn-soft-info" onClick={doSearch}><i className="fa fa-search"></i></Button>
+            {Helper.isEmptyBlockId(blockId) ?
+                <Button variant="btn secondary" onClick={doSearch} disabled>
+                    <i className="fa fa-search"></i></Button>
+                :
+                <Button variant="btn btn-soft-info" onClick={doSearch}>
+                    <i className="fa fa-search"></i></Button>
+            }
         </InputGroup.Append>
         {!isValid && <div className="invalid-feedback text-center visible">
             Only numbers are suitable
