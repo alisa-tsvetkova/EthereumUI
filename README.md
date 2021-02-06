@@ -1,1 +1,1 @@
-# EthereumUI
+Simple React UI to get etherium blocks information
