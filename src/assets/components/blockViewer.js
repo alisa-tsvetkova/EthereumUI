@@ -22,6 +22,7 @@ function Block() {
                 ? 'latest'
                 : blockId)}`;
             setLoading(true);
+
             axios
                 .get(url)
                 .then(result => {
@@ -58,34 +59,38 @@ function Block() {
     }, [blockId]);
 
     return <div className="add-margin">
-        <h1 className="text-center"><small>
-            {isValid &&
-                <div>
-                    {(blockId >= 0 || blockRealId >= 0) && <a className="btn btn-xs btn-icon btn-soft-info mr-1"
-                        href={`/block/${(blockRealId >= 0 ? blockRealId : Number(blockId)) - 1}`}>
-                        <i className="fa fa-caret-left btn-icon__inner"></i>
-                    </a>}
-                    <span className="mr-1">Block ID
+        <h1 className="text-center">
+            <small>
+                { //show block header if is valid
+                    isValid &&
+                    <div>
+                        {(blockId >= 0 || blockRealId >= 0) && <a className="btn btn-xs btn-icon btn-soft-info mr-1"
+                            href={`/block/${(blockRealId >= 0 ? blockRealId : Number(blockId)) - 1}`}>
+                            <i className="fa fa-caret-left btn-icon__inner"></i>
+                        </a>}
+                        <span className="mr-1">Block ID
                         <span className="text-secondary"> #{blockRealId >= 0 ? blockRealId : blockId}</span>
-                    </span>
-                    {!(blockId === undefined) && <a className="btn btn-xs btn-icon btn-soft-info mr-1"
-                        href={`/block/${(blockRealId >= 0 ? blockRealId : Number(blockId)) + 1}`}>
-                        <i className="fa fa-caret-right btn-icon__inner"></i>
-                    </a>}
-                </div>
-            }
-            {!isValid && <div className="text-danger">
-                <small>
-                    {errorMessage}
-                </small>
-            </div>}</small>
+                        </span>
+                        {!(blockId === undefined) && <a className="btn btn-xs btn-icon btn-soft-info mr-1"
+                            href={`/block/${(blockRealId >= 0 ? blockRealId : Number(blockId)) + 1}`}>
+                            <i className="fa fa-caret-right btn-icon__inner"></i>
+                        </a>}
+                    </div>
+                }
+                {//show error id not
+                    !isValid && <div className="text-danger">
+                        <small>
+                            {errorMessage}
+                        </small>
+                    </div>}
+            </small>
         </h1>
-        {isLoading
-            ? <div className="loader">
+        {isLoading ?
+            <div className="loader">
                 <Spinner className="spinner text-primary" animation="border" role="status" />
             </div>
             : (blockData !== null &&
-                <BlockInfo blockData={blockData}></BlockInfo>)
+                <BlockInfo blockData={blockData} />)
         }
 
     </div >;

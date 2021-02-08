@@ -21,7 +21,6 @@ function SearchBar() {
     }
 
     function doSearch() {
-        // eslint-disable-next-line react/prop-types
         history.push(`/block/${blockId}`);
     }
 
@@ -36,30 +35,32 @@ function SearchBar() {
         }
     }
 
-    return <div><InputGroup className="mb-3">
-        <FormControl
-            inputMode="numeric"
-            placeholder="Block ID"
-            aria-label="Block ID"
-            value={blockId}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-        />
-        <InputGroup.Append>
-            {Helper.isEmptyBlockId(blockId) ?
-                <Button variant="btn secondary" onClick={doSearch} disabled>
-                    <i className="fa fa-search"></i></Button>
-                :
-                <Button variant="btn btn-soft-info" onClick={doSearch}>
-                    <i className="fa fa-search"></i></Button>
+    return <div>
+        <InputGroup className="mb-3">
+            <FormControl
+                inputMode="numeric"
+                placeholder="Block ID"
+                aria-label="Block ID"
+                value={blockId}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+            />
+            <InputGroup.Append>
+                {
+                    //disable search button if no information entered
+                    Helper.isEmptyBlockId(blockId) ?
+                        <Button variant="btn secondary" onClick={doSearch} disabled>
+                            <i className="fa fa-search"></i></Button>
+                        : <Button variant="btn btn-soft-info" onClick={doSearch}>
+                            <i className="fa fa-search"></i></Button>
+                }
+            </InputGroup.Append>
+            {!isValid &&
+                <div className="invalid-feedback text-center visible">
+                    Only numbers are suitable
+                </div>
             }
-        </InputGroup.Append>
-        {!isValid && <div className="invalid-feedback text-center visible">
-            Only numbers are suitable
-        </div>}
-
-    </InputGroup>
-
+        </InputGroup>
     </div>;
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import './assets/styles/styles.css';
 import {
   Switch,
   Route,
@@ -8,19 +7,18 @@ import {
 import Header from "./assets/components/header";
 import Block from "./assets/components/blockViewer";
 import Footer from "./assets/components/footer";
+import './assets/styles/styles.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
-    console.log('App.js render');
     return (
       <div className="wrapper">
         <Router>
-          <Header></Header>
+          <Header />
           <main className="main">
             <Switch>
               <Route path="/block/:blockId">
@@ -31,8 +29,7 @@ class App extends Component {
               </Route>
             </Switch>
           </main>
-          <Footer>
-          </Footer>
+          <Footer />
         </Router>
       </div>
     );

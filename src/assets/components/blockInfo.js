@@ -21,11 +21,14 @@ function BlockInfo(props) {
                         <Accordion>
                             <Card>
                                 <Accordion.Toggle as={Card.Header} eventKey="0" className="container-fluid">
-                                    Count: <span className="font-weight-bold">{props.blockData.result.transactions.length}</span>
+                                    Count:
+                                    <span className="font-weight-bold">
+                                        {props.blockData.result.transactions.length}
+                                    </span>
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="0">
                                     <Card.Body>
-                                        <TranTable blockData={props.blockData}></TranTable>
+                                        <TranTable blockData={props.blockData} />
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
