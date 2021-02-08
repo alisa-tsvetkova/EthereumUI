@@ -18,10 +18,10 @@ class App extends Component {
   render() {
     console.log('App.js render');
     return (
-      <div>
+      <div className="wrapper">
         <Router>
           <Header></Header>
-          <main>
+          <main className="main">
             <Switch>
               <Route path="/block/:blockId">
                 <Block></Block>

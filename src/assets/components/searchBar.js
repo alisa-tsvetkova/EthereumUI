@@ -11,6 +11,15 @@ function SearchBar() {
     const [isValid, setValidated] = useState(true);
     const history = useHistory();
 
+    function checkBlockId(newBlockId) {
+        const isValid = Helper.validateBlockId(newBlockId);
+
+        setValidated(isValid);
+        if (isValid) {
+            setBlockId(newBlockId);
+        }
+    }
+
     function doSearch() {
         // eslint-disable-next-line react/prop-types
         history.push(`/block/${blockId}`);
@@ -24,16 +33,6 @@ function SearchBar() {
         if (event.key === 'Enter') {
             checkBlockId(event.target.value);
             doSearch();
-        }
-    }
-
-    function checkBlockId(newBlockId) {
-        console.log(newBlockId);
-        const isValid = Helper.validateBlockId(newBlockId);
-
-        setValidated(isValid);
-        if (isValid) {
-            setBlockId(newBlockId);
         }
     }
 

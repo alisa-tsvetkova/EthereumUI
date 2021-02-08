@@ -1,4 +1,7 @@
 html {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
     box-sizing: border-box;
   }
   *, *:before, *:after {
@@ -7,13 +10,32 @@ html {
 
 body {
     margin: 0;
+    margin-bottom: 40px;
+    padding: 0;
+    height: 100%;
     font-family: $defaultFont;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: $bodyBackground;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
 .visible 
 {
   display: block;
+}
+.wrapper {
+  min-height: 100vh;
+  width:100%;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-rows: 60px 1fr 20px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
 }

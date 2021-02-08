@@ -17,6 +17,8 @@
         "react"
     ],
     "rules": {
-        "semi": "error"
+        "semi": "error",
+        "react/prop-types": "off",
+        "no-debugger": "off"
     }
 }
